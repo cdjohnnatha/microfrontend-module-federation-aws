@@ -30,10 +30,6 @@ runs:
       uses: bahmutov/npm-install@v1
       env:
         NODE_AUTH_TOKEN: ${{ inputs.NODE_AUTH_TOKEN }}
-    
-    - name: Initial Setup
-      shell: bash
-      run: ./_scripts/setup.sh
 
     - name: Get build bundles from cache
       id: build-cache

@@ -16,9 +16,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm run build
+      - name: Checkout repository
+        uses: ./github/actions/prepare
+        with:
+          fetch-depth: 0
+
+      - name: Set Env Variables
+        run: |
+          echo "ENV=${{ inputs.environment }}" >> $GITHUB_ENV;
 
       - uses: shinyinc/action-aws-cli@v1.2
       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
