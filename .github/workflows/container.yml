@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: ./github/actions/prepare
+        uses: ./.github/actions/prepare
         with:
           fetch-depth: 0
 
