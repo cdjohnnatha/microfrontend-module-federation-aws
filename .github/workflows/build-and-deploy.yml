@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Prepare build
-        uses: actions/prepare
+        uses: ./.github/actions/prepare
         with:
           fetch-depth: 0
 

@@ -1,0 +1,12 @@
+name: Manual build & deploy
+
+on:
+  workflow_dispatch:
+    branches:
+      - '**'
+
+jobs:
+  build-and-deploy:
+    name: Manual
+    uses: ./.github/workflows/build-and-deploy.yml
+    secrets: inherit
