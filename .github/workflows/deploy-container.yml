@@ -18,9 +18,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install packages
+        run: npm install
 
-      - name: Restore from cache
-        uses: ./.github/actions/prepare
+      - name: Build project
+        run: npm run build
 
       - uses: shinyinc/action-aws-cli@v1.2
       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
