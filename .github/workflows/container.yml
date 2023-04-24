@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: ./.github/actions/prepare
+      - name: Prepare build
+        uses: actions/prepare
         with:
           fetch-depth: 0
 
