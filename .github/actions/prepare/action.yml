@@ -28,8 +28,6 @@ runs:
     - name: Install dependencies
       if: steps.node-modules-cache.outputs.cache-hit != 'true'
       uses: bahmutov/npm-install@v1
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.NODE_AUTH_TOKEN }}
 
     - name: Get build bundles from cache
       id: build-cache

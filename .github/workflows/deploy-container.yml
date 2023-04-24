@@ -1,4 +1,4 @@
-name: deploy-container
+name: Deploy Container
 
 on: 
   push:
@@ -16,14 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Prepare build
-        uses: ./.github/actions/prepare
-        with:
-          fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set Env Variables
-        run: |
-          echo "ENV=${{ inputs.environment }}" >> $GITHUB_ENV;
+      - name: Restore from cache
+        uses: ./.github/actions/prepare
 
       - uses: shinyinc/action-aws-cli@v1.2
       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
